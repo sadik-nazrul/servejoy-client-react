@@ -3,6 +3,8 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
+import Contact from "../pages/Contact";
+import NeedVolunteer from "../pages/NeedVolunteer";
 
 const router = createBrowserRouter([
     {
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/contact',
+                element: <Contact />
+            },
+            {
+                path: '/need-volunteer',
+                element: <NeedVolunteer />
             },
             {
                 path: '/register',

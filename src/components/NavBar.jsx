@@ -3,6 +3,7 @@ import {
     Dropdown,
     DropdownAction,
     DropdownContent,
+    DropdownItem,
     DropdownList,
     Navbar,
     NavbarBrand,
@@ -15,21 +16,10 @@ import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import ThemeSwitcher from './Themeswitcher';
+import { SignOut } from 'phosphor-react';
 
 const NavBar = () => {
     const { user, logOut } = useAuth()
-    const userLinks = <>
-        <li>
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
-                } to='/my-profile'>My Profile
-            </NavLink>
-        </li>
-        <li>
-            <button className='px-5 py-2 bg-secondary text-white rounded' onClick={logOut}>Logout</button>
-        </li>
-    </>
     const links = <>
         <li>
             <NavLink
@@ -56,7 +46,7 @@ const NavBar = () => {
         </li>
     </>
     return (
-        <Navbar>
+        <Navbar className='dark:bg-gray-900 sticky top-0 bg-white shadow z-50'>
             <NavbarContainer className='mx-auto'>
                 <NavbarBrand>
                     <img src='' alt="keep" />
@@ -68,18 +58,39 @@ const NavBar = () => {
                     <NavbarList className='block space-x-2'>
                         {
                             !user && <>
-                                <Link to='/login' type='button' ><FaCircleUser className='dark:text-white' size={40} /></Link>
+                                <Link title='Login' to='/login' type='button' ><FaCircleUser className='dark:text-white' size={40} /></Link>
                             </>
                         }
                         {
                             user &&
-                            <Dropdown placement="bottom-end">
+                            <Dropdown trigger="hover" placement="bottom-end">
                                 <DropdownAction asChild>
                                     <Avatar className='cursor-pointer' title={user?.displayName} size="lg" shape="circle" img={user?.photoURL} />
                                 </DropdownAction>
                                 <DropdownContent>
                                     <DropdownList className='space-y-2'>
-                                        {userLinks}
+                                        <Dropdown trigger='hover'>
+                                            <DropdownAction>My Profile</DropdownAction>
+                                            <DropdownContent>
+                                                <DropdownList>
+                                                    <DropdownItem>
+                                                        <NavLink to='/' className={({ isActive }) =>
+                                                            isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
+                                                        }>Add Volunteer Post</NavLink>
+                                                    </DropdownItem>
+
+                                                    <DropdownItem>
+                                                        <NavLink to='/contact' className={({ isActive }) =>
+                                                            isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
+                                                        }>Manage My Post</NavLink>
+                                                    </DropdownItem>
+                                                </DropdownList>
+                                            </DropdownContent>
+                                        </Dropdown>
+                                        <DropdownItem onClick={logOut}>
+                                            <SignOut size={20} />
+                                            Logout
+                                        </DropdownItem>
                                     </DropdownList>
                                 </DropdownContent>
                             </Dropdown>

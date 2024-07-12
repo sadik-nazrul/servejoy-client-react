@@ -33,7 +33,7 @@ const NavBar = () => {
             <NavLink
                 className={({ isActive }) =>
                     isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
-                } to='/need-volunteer'>Need Volunteer
+                } to='/need-volunteers'>Need Volunteer
             </NavLink>
         </li>
 

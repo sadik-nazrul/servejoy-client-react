@@ -12,7 +12,7 @@ import { useTheme } from "../providers/ThemeProvider";
 const ThemeSwitcher = () => {
     const { setTheme } = useTheme();
     return (
-        <Dropdown placement="bottom-end">
+        <Dropdown trigger="hover" placement="bottom-end">
             <DropdownAction asChild>
                 <button className="rounded-lg bg-primary-25 p-2.5 dark:bg-white">
                     <MoonStars size={20} color="#1C222B" className="hidden dark:block" />

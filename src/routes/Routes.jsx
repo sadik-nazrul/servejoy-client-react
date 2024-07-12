@@ -5,6 +5,7 @@ import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
 import Contact from "../pages/Contact";
 import NeedVolunteer from "../pages/NeedVolunteer";
+import NeedVolunteersDetails from "../pages/NeedVolunteersDetails";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
                 element: <Contact />
             },
             {
-                path: '/need-volunteer',
+                path: '/need-volunteers',
                 element: <NeedVolunteer />
             },
             {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login />
+            },
+            {
+                path: '/needvolunteer/:id',
+                element: <NeedVolunteersDetails />,
+                loader: ({params}) => fetch(`https://servejoy-server.vercel.app/needvolunteers/${params.id}`)
             }
         ]
     }

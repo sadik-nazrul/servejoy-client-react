@@ -6,6 +6,9 @@ import Login from "../pages/Authentication/Login";
 import Contact from "../pages/Contact";
 import NeedVolunteer from "../pages/NeedVolunteer";
 import NeedVolunteersDetails from "../pages/NeedVolunteersDetails";
+import AddVolunteerAnnounce from "../pages/AddVolunteerAnnounce";
+import ManageMyPost from "../pages/ManageMyPost";
+import UpdateVolunteerAnnounce from "../pages/UpdateVolunteerAnnounce";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +38,20 @@ const router = createBrowserRouter([
             {
                 path: '/needvolunteer/:id',
                 element: <NeedVolunteersDetails />,
-                loader: ({params}) => fetch(`https://servejoy-server.vercel.app/needvolunteers/${params.id}`)
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/needvolunteer/${params.id}`)
+            },
+            {
+                path: '/addvolunteerannounce',
+                element: <AddVolunteerAnnounce />
+            },
+            {
+                path: '/updatevolunteerannounce/:id',
+                element: <UpdateVolunteerAnnounce />,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/needvolunteer/${params.id}`)
+            },
+            {
+                path: '/manage-my-post',
+                element: <ManageMyPost />
             }
         ]
     }

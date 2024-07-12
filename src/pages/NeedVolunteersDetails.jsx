@@ -10,13 +10,13 @@ import toast from 'react-hot-toast';
 const NeedVolunteersDetails = () => {
     const { user } = useAuth();
     const needVolunteerDetails = useLoaderData();
-    // console.log(needVolunteerDetails);
-    const { image_url, announcement, short_description, organizer_email, num_Vol_need, location, category, Deadline } = needVolunteerDetails;
+    console.log(needVolunteerDetails);
+    const { thumbnail, title, description, numvolneed, location, category, deadline } = needVolunteerDetails;
 
     // Be a volunteer request
     const handleBeAVolunteer = e => {
         e.preventDefault();
-        if (user?.email === organizer_email) return toast.error("You Don't have permission to apply your post")
+        if (user?.email === needVolunteerDetails?.organizer?.email) return toast.error("You Don't have permission to apply your post")
         const form = e.target;
         const thumbnail = form.thumbnail.value;
         const title = form.title.value;
@@ -35,26 +35,26 @@ const NeedVolunteersDetails = () => {
     }
     return (
         <div>
-            <div style={{ backgroundImage: `url(${image_url})` }} className="h-96 bg-cover bg-center flex items-center justify-center bg-scroll">
+            <div style={{ backgroundImage: `url(${thumbnail})` }} className="h-96 bg-cover bg-center flex items-center justify-center bg-scroll">
                 <Breadcrumb borderType="border-xy" className='bg-secondary'>
                     <BreadcrumbItem>
                         <Link to='/' ><HouseLine size={18} color='#fff' /></Link>
                     </BreadcrumbItem>
                     <BreadcrumbItem>
                         <CaretRight size={18} color='#fff' />
-                        <h2 className='text-white'>{announcement}</h2>
+                        <h2 className='text-white'>{title}</h2>
                     </BreadcrumbItem>
                 </Breadcrumb>
             </div>
             <div className='container mx-auto p-5 grid lg:grid-cols-3 gap-5 dark:text-white'>
                 <div className='lg:col-span-2 space-y-4 p-5 shadow shadow-primary rounded lg:order-none order-2'>
                     <div className='flex flex-col gap-4'>
-                        <p>{short_description}</p>
+                        <p>{description}</p>
                         <h2 className='flex items-center gap-1'><FaMapLocation />{location}</h2>
-                        <h2 className='flex items-center gap-1'><FaCalendar />{new Date(Deadline).toLocaleDateString()}</h2>
+                        <h2 className='flex items-center gap-1'><FaCalendar />{new Date(deadline).toLocaleDateString()}</h2>
                         <h2><span className='font-semibold'>Category: </span>{category}</h2>
-                        <h2><span className='font-semibold'>Organizer: </span><a href={`mailto:${organizer_email}`} className='capitalize'>{organizer_email}</a></h2>
-                        <h2><span className='font-semibold'>Number of Volunteer need: </span>{num_Vol_need}</h2>
+                        <h2><span className='font-semibold'>Organizer: </span><a href={`mailto:${needVolunteerDetails?.organizer?.email}`}>{needVolunteerDetails?.organizer?.email}</a></h2>
+                        <h2><span className='font-semibold'>Number of Volunteer need: </span>{numvolneed}</h2>
                     </div>
                 </div>
 
@@ -80,13 +80,13 @@ const NeedVolunteersDetails = () => {
                                                 <Label htmlFor="thumbnail" className='font-subtitle'>Tumbnail</Label>
                                                 <Input
 
-                                                    name='thumbnail' defaultValue={image_url} type="text" readOnly />
+                                                    name='thumbnail' defaultValue={thumbnail} type="text" readOnly />
                                             </div>
                                             <div className='w-1/2'>
                                                 <Label htmlFor="title" className='font-subtitle'>Title</Label>
                                                 <Input
 
-                                                    name='title' defaultValue={announcement} type="text" readOnly />
+                                                    name='title' defaultValue={title} type="text" readOnly />
                                             </div>
                                         </div>
 
@@ -95,7 +95,7 @@ const NeedVolunteersDetails = () => {
                                                 <Label htmlFor="description" className='font-subtitle'>Description</Label>
                                                 <Input
 
-                                                    name='description' defaultValue={short_description} type="text" readOnly />
+                                                    name='description' defaultValue={description} type="text" readOnly />
                                             </div>
                                             <div className='w-1/2'>
                                                 <Label htmlFor="category" className='font-subtitle'>Category</Label>
@@ -116,7 +116,7 @@ const NeedVolunteersDetails = () => {
                                                 <Label htmlFor="numvolneed" className='font-subtitle'>Number of Volunteer needed</Label>
                                                 <Input
 
-                                                    name='numvolneed' defaultValue={num_Vol_need} type="text" readOnly />
+                                                    name='numvolneed' defaultValue={numvolneed} type="text" readOnly />
                                             </div>
                                         </div>
 
@@ -125,13 +125,13 @@ const NeedVolunteersDetails = () => {
                                                 <Label htmlFor="deadline" className='font-subtitle'>Deadline</Label>
                                                 <Input
 
-                                                    name='deadline' defaultValue={new Date(Deadline).toLocaleDateString()} type="text" readOnly />
+                                                    name='deadline' defaultValue={new Date(deadline).toLocaleDateString()} type="text" readOnly />
                                             </div>
                                             <div className='w-1/2'>
                                                 <Label htmlFor="organizer" className='font-subtitle'>Organizer Email</Label>
                                                 <Input
 
-                                                    name='organizer' defaultValue={organizer_email} type="text" readOnly />
+                                                    name='organizer' defaultValue={needVolunteerDetails?.organizer?.email} type="text" readOnly />
                                             </div>
                                         </div>
 

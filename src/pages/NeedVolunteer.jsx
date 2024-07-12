@@ -1,9 +1,10 @@
+import NeedVolunteers from "../components/NeedVolunteers";
 
 
 const NeedVolunteer = () => {
     return (
         <div>
-            Need Volunteer
+            <NeedVolunteers />
         </div>
     );
 };

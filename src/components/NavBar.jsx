@@ -74,13 +74,13 @@ const NavBar = () => {
                                             <DropdownContent>
                                                 <DropdownList>
                                                     <DropdownItem>
-                                                        <NavLink to='/' className={({ isActive }) =>
+                                                        <NavLink to='/addvolunteerannounce' className={({ isActive }) =>
                                                             isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
                                                         }>Add Volunteer Post</NavLink>
                                                     </DropdownItem>
 
                                                     <DropdownItem>
-                                                        <NavLink to='/contact' className={({ isActive }) =>
+                                                        <NavLink to='/manage-my-post' className={({ isActive }) =>
                                                             isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
                                                         }>Manage My Post</NavLink>
                                                     </DropdownItem>

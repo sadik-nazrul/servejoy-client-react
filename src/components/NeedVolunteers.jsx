@@ -10,7 +10,7 @@ const NeedVolunteers = () => {
     const axiosCommon = useAxiosCommon();
     const [loading, setLoading] = useState(true)
     const [needVolunteers, setNeedVolunteers] = useState([]);
-    const sixNeedVolunteers = needVolunteers.slice(0, 4)
+    // const sixNeedVolunteers = needVolunteers.slice(0, 4)
 
     useEffect(() => {
         const needVolunteersData = async () => {
@@ -37,7 +37,7 @@ const NeedVolunteers = () => {
                 loading ? <ThreeCardSkeleton />
                     : <div className="grid lg:grid-cols-4 gap-5 py-5">
                         {
-                            sixNeedVolunteers.map(needVolunteer => <NeedVolunteerCard
+                            needVolunteers.map(needVolunteer => <NeedVolunteerCard
                                 key={needVolunteer._id}
                                 needVolunteer={needVolunteer}
                             />)

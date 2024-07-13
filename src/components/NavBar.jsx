@@ -49,7 +49,7 @@ const NavBar = () => {
         <Navbar className='dark:bg-gray-900 sticky top-0 bg-white shadow z-50'>
             <NavbarContainer className='mx-auto'>
                 <NavbarBrand>
-                    <img src='' alt="keep" />
+                    <h2>ServeJoy</h2>
                 </NavbarBrand>
                 <NavbarList className='gap-5 dark:text-white'>
                     {links}

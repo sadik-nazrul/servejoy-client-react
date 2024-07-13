@@ -98,10 +98,18 @@ const UpdateVolunteerAnnounce = () => {
                     <div className='w-full flex flex-col gap-1 dark:text-white'>
                         <Label htmlFor="deadline" className='font-subtitle'>Deadline</Label>
                         {/* Date Picker Input Field */}
-                        <DatePicker
+                        {/* <DatePicker
                             className='border p-2 rounded-md'
                             selected={startDate}
                             onChange={date => setStartDate(date)}
+                        /> */}
+                        <DatePicker
+                            showIcon
+                            closeOnScroll={true}
+                            selected={startDate} onChange={(date) => setStartDate(date)}
+                            className="border p-2 rounded w-full"
+                            dateFormat="dd/MM/yyyy"
+                            name="deadline"
                         />
                     </div>
                     <div className="w-full">

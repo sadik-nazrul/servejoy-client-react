@@ -8,7 +8,7 @@ export const NeedVolunteerCard = ({ needVolunteer }) => {
     return (
         <Link to={`/needvolunteer/${_id}`} title='view details' type='button' className='border hover:shadow hover:shadow-secondary rounded-xl dark:text-white'>
             <div className='relative'>
-                <img className='max-w-full h-52 object-cover rounded-t-xl' src={thumbnail} alt={title} />
+                <img className='max-w-full w-full h-52 object-cover rounded-t-xl' src={thumbnail} alt={title} />
                 <h2 className="px-2 py-1 text-white absolute top-2 left-2 bg-secondary rounded">{category}</h2>
             </div>
             <div className='flex flex-col p-5'>

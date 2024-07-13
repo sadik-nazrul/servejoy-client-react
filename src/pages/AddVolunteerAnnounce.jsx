@@ -23,7 +23,7 @@ const AddVolunteerAnnounce = () => {
         const description = form.description.value
         const location = form.location.value
         const numvolneed = form.numvolneed.value
-        const deadline = form.deadline.value
+        const deadline = startDate
         const category = form.category.value
         const name = form.name.value
         const email = form.email.value
@@ -38,6 +38,7 @@ const AddVolunteerAnnounce = () => {
             category,
             organizer: { name, email, photo: user?.photoURL }
         }
+        console.table(newPost);
         try {
             const { data } = await axiosCommon.post(`/needvolunteerpost`, newPost)
             console.log(data);

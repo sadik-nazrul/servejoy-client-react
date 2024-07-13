@@ -1,20 +1,22 @@
 'use client'
 import { CaretRight, HouseLine } from 'phosphor-react'
 import { Breadcrumb, BreadcrumbItem, Button, Input, Label, Modal, ModalAction, ModalBody, ModalClose, ModalContent, ModalHeader, ModalTitle } from 'keep-react'
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaCalendar, FaMapLocation } from 'react-icons/fa6';
 import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
+import useAxiosCommon from '../hooks/useAxiosCommon';
 
 
 const NeedVolunteersDetails = () => {
+    const axiosCommon = useAxiosCommon();
     const { user } = useAuth();
     const needVolunteerDetails = useLoaderData();
-    console.log(needVolunteerDetails);
+    const navigate = useNavigate();
     const { thumbnail, title, description, numvolneed, location, category, deadline } = needVolunteerDetails;
 
     // Be a volunteer request
-    const handleBeAVolunteer = e => {
+    const handleBeAVolunteer = async e => {
         e.preventDefault();
         if (user?.email === needVolunteerDetails?.organizer?.email) return toast.error("You Don't have permission to apply your post")
         const form = e.target;
@@ -29,9 +31,24 @@ const NeedVolunteersDetails = () => {
         const name = form.name.value;
         const email = form.email.value;
         const sug = form.sug.value;
+        const status = 'Requested'
 
-        const newVolunteer = { thumbnail, title, description, category, location, numvolneed, deadline, organizer, volunteer: { name, email, sug } }
-        console.table(newVolunteer);
+        const beAVolunteer = { thumbnail, title, description, category, location, numvolneed, deadline, organizer, status, volunteer: { name, email, sug, photo: user?.photoURL } }
+        console.table(beAVolunteer);
+
+        try {
+            const { data } = await axiosCommon.post(`/beavolunteer`, beAVolunteer)
+            console.log(data);
+            if (data.insertedId) {
+                toast.success('Your request Successfull')
+                e.target.reset()
+                navigate('/my-request')
+            }
+        }
+        catch (err) {
+            console.log(err);
+            toast.error(err.message)
+        }
     }
     return (
         <div>

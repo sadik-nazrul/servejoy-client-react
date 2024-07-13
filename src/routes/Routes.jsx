@@ -9,6 +9,8 @@ import NeedVolunteersDetails from "../pages/NeedVolunteersDetails";
 import AddVolunteerAnnounce from "../pages/AddVolunteerAnnounce";
 import ManageMyPost from "../pages/ManageMyPost";
 import UpdateVolunteerAnnounce from "../pages/UpdateVolunteerAnnounce";
+import Requesrted from "../pages/Requesrted";
+import MyRequest from "../pages/MyRequest";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
             {
                 path: '/manage-my-post',
                 element: <ManageMyPost />
+            },
+            {
+                path: '/requested',
+                element: <Requesrted /> 
+            },
+            {
+                path: '/my-request',
+                element: <MyRequest /> 
             }
         ]
     }

@@ -84,6 +84,18 @@ const NavBar = () => {
                                                             isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
                                                         }>Manage My Post</NavLink>
                                                     </DropdownItem>
+
+                                                    <DropdownItem>
+                                                        <NavLink to='/my-request' className={({ isActive }) =>
+                                                            isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
+                                                        }>My Request</NavLink>
+                                                    </DropdownItem>
+
+                                                    <DropdownItem>
+                                                        <NavLink to='/requested' className={({ isActive }) =>
+                                                            isActive ? 'bg-secondary px-5 py-2 rounded text-white' : ''
+                                                        }>Requested</NavLink>
+                                                    </DropdownItem>
                                                 </DropdownList>
                                             </DropdownContent>
                                         </Dropdown>

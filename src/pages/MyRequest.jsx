@@ -3,9 +3,11 @@ import useAuth from "../hooks/useAuth";
 import useAxiosCommon from "../hooks/useAxiosCommon";
 import toast from "react-hot-toast";
 import RingLoader from "react-spinners/RingLoader";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const MyRequest = () => {
+    const axiosSecure = useAxiosSecure();
     const axiosCommon = useAxiosCommon()
     const { user } = useAuth();
     const [requests, setRequest] = useState([]);
@@ -20,7 +22,7 @@ const MyRequest = () => {
     const getData = async () => {
         setLoading(true)
         try {
-            const { data } = await axiosCommon(`request/${user?.email}`)
+            const { data } = await axiosSecure(`request/${user?.email}`)
             console.log(data);
             setRequest(data)
         }

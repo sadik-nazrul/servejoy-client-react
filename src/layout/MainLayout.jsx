@@ -9,7 +9,7 @@ const MainLayout = () => {
             {/* Header */}
             <NavBar />
             {/* Outlet */}
-            <div className="min-h-[calc(100vh-319px)] dark:bg-gray-900">
+            <div className="min-h-[calc(100vh-142px)] dark:bg-gray-900">
             <Outlet />
             </div>
 

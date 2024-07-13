@@ -49,7 +49,7 @@ const Login = () => {
         }
     }
     return (
-        <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
+        <div className="container mx-auto m-5 w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
             <h2 className="mb-3 text-3xl font-semibold text-center">Create an Account</h2>
             <p className="text-sm text-center dark:text-gray-600">If you don't have any account!
                 <Link
@@ -87,7 +87,7 @@ const Login = () => {
                         <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" autoComplete="off" />
                     </div>
                 </div>
-                <input type="submit" className="cursor-pointer w-full px-8 py-3 font-semibold rounded-md dark:bg-secondary dark:text-gray-50" value='Sign In' />
+                <input type="submit" className="cursor-pointer w-full px-8 py-3 font-semibold rounded-md bg-secondary text-gray-50" value='Sign In' />
             </form>
         </div>
     );

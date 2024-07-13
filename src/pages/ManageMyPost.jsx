@@ -4,9 +4,11 @@ import useAxiosCommon from "../hooks/useAxiosCommon";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import RingLoader from "react-spinners/RingLoader";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const ManageMyPost = () => {
+    const axiosSecure = useAxiosSecure();
     const axiosCommon = useAxiosCommon()
     const { user } = useAuth();
     const [posts, setPosts] = useState([]);
@@ -21,7 +23,7 @@ const ManageMyPost = () => {
     const getData = async () => {
         setLoading(true)
         try {
-            const { data } = await axiosCommon(`/needvolunteers/${user?.email}`);
+            const { data } = await axiosSecure(`/needvolunteers/${user?.email}`);
             setPosts(data);
         }
         catch (error) {

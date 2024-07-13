@@ -11,6 +11,7 @@ import ManageMyPost from "../pages/ManageMyPost";
 import UpdateVolunteerAnnounce from "../pages/UpdateVolunteerAnnounce";
 import Requesrted from "../pages/Requesrted";
 import MyRequest from "../pages/MyRequest";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -39,29 +40,41 @@ const router = createBrowserRouter([
             },
             {
                 path: '/needvolunteer/:id',
-                element: <NeedVolunteersDetails />,
-                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/needvolunteer/${params.id}`)
+                element: <PrivateRoute>
+                    <NeedVolunteersDetails />
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/needvolunteer/${params.id}`)
             },
             {
                 path: '/addvolunteerannounce',
-                element: <AddVolunteerAnnounce />
+                element: <PrivateRoute>
+                    <AddVolunteerAnnounce />
+                </PrivateRoute>
             },
             {
                 path: '/updatevolunteerannounce/:id',
-                element: <UpdateVolunteerAnnounce />,
-                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/needvolunteer/${params.id}`)
+                element: <PrivateRoute>
+                    <UpdateVolunteerAnnounce />
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/needvolunteer/${params.id}`)
             },
             {
                 path: '/manage-my-post',
-                element: <ManageMyPost />
+                element: <PrivateRoute>
+                    <ManageMyPost />
+                </PrivateRoute>
             },
             {
                 path: '/requested',
-                element: <Requesrted /> 
+                element: <PrivateRoute>
+                    <Requesrted />
+                </PrivateRoute>
             },
             {
                 path: '/my-request',
-                element: <MyRequest /> 
+                element: <PrivateRoute>
+                    <MyRequest />
+                </PrivateRoute>
             }
         ]
     }

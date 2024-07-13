@@ -3,7 +3,7 @@ import { Skeleton, SkeletonLine } from 'keep-react'
 
 export const ThreeCardSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 gap-5 xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-5 xl:grid-cols-3 container mx-auto p-5">
       <Skeleton className="w-full space-y-2.5 xl:max-w-md">
         <SkeletonLine className="h-52 w-full" />
         <SkeletonLine className="h-4 w-full" />
